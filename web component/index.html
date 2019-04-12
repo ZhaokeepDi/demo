@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit-word demo</title>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <h1><code>edit-word</code> demo</h1>
+
+    <!-- 模板接收插槽 -->
+<template id="person-template">
+  <div>
+    <h2>Personal ID Card</h2>
+    <slot name="person-name">NAME MISSING</slot>
+    <ul>
+      <li><slot name="person-age">AGE MISSING</slot></li>
+      <li><slot name="person-occupation">OCCUPATION MISSING</slot></li>
+    </ul>
+  </div>
+  <p>呵呵呵呵呵</p>
+</template>
+
+    <person-details>
+    <p slot="title">插槽</p>
+      <p slot="person-name"><edit-word>
+          组件二
+        </edit-word>template插槽person-name</p>
+      <span slot="person-age">template插槽person-age</span>
+      <span slot="person-occupation">template插槽person-occupation</span>
+    </person-details>
+
+    <p>My name is <edit-word>Chris</edit-word>, the man said.</p>
+  </body>
+</html>
