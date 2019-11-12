@@ -1,0 +1,32 @@
+<script type="text/javascript">
+			// 移动端使用css单位均为逻辑像素
+			(function (baseFontSize) {
+				//750物理像素下默认大小
+			    const _baseFontSize = baseFontSize || 75;
+				// 获取设备类型信息
+			    const ua = navigator.userAgent;
+				// 应用类型、操作系统、软件开发商以及版本号&&判断是否为安卓浏览器
+			    const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i);
+				// 浏览器版本号以及其他&&判断是否为iPhone
+			    const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi);
+				// 获取设备像素比,物理像素/设备独立像素(逻辑像素)
+			    const dpr = window.devicePixelRatio || 1;
+				//534为系统版本
+			    if (!isIos && !(matches && matches[1] > 534)) {
+			        // 如果非iOS, 非Android4.3以上, dpr设为1;
+			        dpr = 1;
+			    }
+				// 缩放比,当dpr大的时候减小缩放比使移动端css的单位逻辑像素变小使其对应物理像素为1:1
+			    const scale = 1 / dpr;
+				// 检测与添加meta标签
+			    let metaEl = document.querySelector('meta[name="viewport"]');
+			    if (!metaEl) {
+			        metaEl = document.createElement('meta');
+			        metaEl.setAttribute('name', 'viewport');
+			        window.document.head.appendChild(metaEl);
+			    }
+			    metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
+				// 把屏幕宽度分为十份,并设置为rem
+			    document.documentElement.style.fontSize = document.documentElement.clientWidth / (750 / _baseFontSize) + 'px';
+			})();
+		</script>
