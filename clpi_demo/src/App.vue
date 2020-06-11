@@ -2,7 +2,7 @@
 	<div id="app">
 		<div>
 			<p>原图</p>
-			<img style="width:500px" :src="src" />
+			<img style="height:300px" :src="src" />
 		</div>
 		<div>
 			<p>点击长按拖拽，滚轮控制大小\|/</p>
@@ -11,7 +11,7 @@
 		</div>
   <div>
     <p>生成base64位图</p>
-    <img style="width:500px" :src="base64" />
+    <img style="height:300px" :src="base64" />
   </div>
 		
 	</div>
